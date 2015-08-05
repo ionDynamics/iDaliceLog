@@ -85,7 +85,7 @@ func (l *Middleware) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	}
 	l.Logger.Log(startEvent)
 
-	lrw := &LogResponseWriter{ResponseWriter: rw}
+	lrw := &LogResponseWriter{status: 200, ResponseWriter: rw}
 
 	l.Next.ServeHTTP(lrw, r)
 
